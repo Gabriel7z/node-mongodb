@@ -27,5 +27,10 @@ delete: async(req, res) => {
         }
 }
 }
+try{
+    res.json(await Produto.findByIdAndDelete(req.params.id))
+} catch(error) {
+    res.status(400).json({error: 'Registro Não Encontrado'})
+    }
 
 module.exports = ProdutoController
